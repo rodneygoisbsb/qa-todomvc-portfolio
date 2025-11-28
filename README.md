@@ -1,7 +1,6 @@
 # QA Portfolio: TodoMVC (React)
 
 ![Status](https://img.shields.io/badge/Status-Concluído-success)
-![Context](https://img.shields.io/badge/Contexto-Transição%20de%20Carreira-blue)
 ![Tools](https://img.shields.io/badge/Tools-Notion%20%7C%20Gherkin%20%7C%20Edge-orange)
 
 Este repositório documenta o planejamento e execução de testes funcionais para o sistema **[TodoMVC (React Version)](https://todomvc.com/examples/react/dist/)**.
@@ -38,7 +37,7 @@ Abaixo está o link direto para o arquivo que centraliza toda a **análise de re
 
 Este documento serve como a **Fonte Única de Verdade** (Single Source of Truth), detalhando o comportamento esperado para cada funcionalidade.
 
-**[VER DOCUMENTAÇÃO COMPLETA: Histórias, RNs e Cenários BDD](./Especificacoes.md)**
+**[Ver Documentação Completa: Histórias, RNs e Cenários BDD](./docs/Especificacoes.md)**
 
 ---
 
