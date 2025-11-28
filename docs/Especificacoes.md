@@ -40,12 +40,12 @@ Cenário: Ocultação de elementos desnecessários
 Como usuário focado em produtividade, quero adicionar novas tarefas rapidamente pressionando Enter, para que eu possa registrar meus pendentes sem usar o mouse.
 
 ### 🎯 Regras de Negócio (RNs)
-RN01 — A inclusão deve ocorrer ao pressionar a tecla "Enter" (não há botão "Salvar").
-RN02 — O campo de input deve ser limpo automaticamente após a inclusão com sucesso.
-RN03 — O sistema não deve permitir a criação de tarefas vazias.
-RN04 — O sistema deve ignorar espaços em branco no início e no fim do texto (Trim).
-RN05 — Ao adicionar a primeira tarefa, a lista e o rodapé devem se tornar visíveis (transição de estado).
-RN06 — O item recém-adicionado deve ir para o final da lista.
+* RN01 — A inclusão deve ocorrer ao pressionar a tecla "Enter" (não há botão "Salvar").
+* RN02 — O campo de input deve ser limpo automaticamente após a inclusão com sucesso.
+* RN03 — O sistema não deve permitir a criação de tarefas vazias.
+* RN04 — O sistema deve ignorar espaços em branco no início e no fim do texto (Trim).
+* RN05 — Ao adicionar a primeira tarefa, a lista e o rodapé devem se tornar visíveis (transição de estado).
+* RN06 — O item recém-adicionado deve ir para o final da lista.
 
 ### 🧪 Cenários BDD (Gherkin)
 ```Gherkin
@@ -79,10 +79,10 @@ Cenário: Primeira inserção habilita elementos de controle
 Como usuário da aplicação, quero visualizar todas as tarefas (pendentes e concluídas), para que eu possa acompanhar meu progresso completo e gerenciar o que já foi feito.
 
 ### 🎯 Regras de Negócio (RNs)
-RN01 — A aplicação deve iniciar com o filtro "Todos" selecionado por padrão.
-RN02 — O filtro deve exibir tanto itens ativos quanto concluídos na lista.
-RN03 — O contador "items left" deve ignorar tarefas concluídas, mostrando apenas as pendentes.
-RN04 — O botão do filtro "Todos" deve estar visualmente destacado quando ativo (classe 'selected').
+* RN01 — A aplicação deve iniciar com o filtro "Todos" selecionado por padrão.
+* RN02 — O filtro deve exibir tanto itens ativos quanto concluídos na lista.
+* RN03 — O contador "items left" deve ignorar tarefas concluídas, mostrando apenas as pendentes.
+* RN04 — O botão do filtro "Todos" deve estar visualmente destacado quando ativo (classe 'selected').
 
 ### 🧪 Cenários BDD (Gherkin)
 ```Gherkin
@@ -110,10 +110,10 @@ Cenário: Contador deve ignorar itens concluídos
 Como usuário da aplicação, quero visualizar apenas as tarefas pendentes (Active), para que eu não me distraia com o que já foi concluído.
 
 ### 🎯 Regras de Negócio (RNs)
-RN01 — Ao selecionar o filtro "Active", tarefas marcadas como concluídas devem ser ocultadas.
-RN02 — A URL da aplicação deve mudar para "/active" (ou "#/active").
-RN03 — O botão "Active" deve estar visualmente selecionado.
-RN04 — O contador deve continuar exibindo o número total de tarefas pendentes.
+* RN01 — Ao selecionar o filtro "Active", tarefas marcadas como concluídas devem ser ocultadas.
+* RN02 — A URL da aplicação deve mudar para "/active" (ou "#/active").
+* RN03 — O botão "Active" deve estar visualmente selecionado.
+* RN04 — O contador deve continuar exibindo o número total de tarefas pendentes.
 
 ### 🧪 Cenários BDD (Gherkin)
 ```Gherkin
@@ -138,10 +138,10 @@ Cenário: Validação do contador no filtro Active
 Como usuário da aplicação, quero visualizar apenas as tarefas que já finalizei, para sentir satisfação com o dever cumprido.
 
 ### 🎯 Regras de Negócio (RNs)
-RN01 — O filtro deve exibir apenas tarefas com status "completed" (riscadas).
-RN02 — Tarefas ativas (pendentes) devem ser ocultadas da lista.
-RN03 — O contador "items left" deve continuar mostrando o número de tarefas pendentes (e NÃO o número de tarefas concluídas visualizadas).
-RN04 — A URL deve ser atualizada para "/completed".
+* RN01 — O filtro deve exibir apenas tarefas com status "completed" (riscadas).
+* RN02 — Tarefas ativas (pendentes) devem ser ocultadas da lista.
+* RN03 — O contador "items left" deve continuar mostrando o número de tarefas pendentes (e NÃO o número de tarefas concluídas visualizadas).
+* RN04 — A URL deve ser atualizada para "/completed".
 
 ### 🧪 Cenários BDD (Gherkin)
 ```Gherkin
@@ -168,11 +168,11 @@ Cenário: Validação do contador no filtro Completed
 Como usuário da aplicação, quero marcar tarefas como concluídas (e desmarcar se necessário), para que eu possa ver o que já foi feito do que ainda está pendente.
 
 ### 🎯 Regras de Negócio (RNs)
-RN01 — Ao clicar no checkbox de um item ativo, ele deve ser marcado como concluído.
-RN02 — Itens concluídos devem ter o texto riscado (line-through) e cor cinza (classe CSS 'completed').
-RN03 — O contador "items left" deve ser decrementado ao concluir uma tarefa.
-RN04 — Ao clicar no checkbox de um item já concluído, ele deve voltar a ser ativo (desmarcado).
-RN05 — O contador "items left" deve ser incrementado ao reativar uma tarefa.
+* RN01 — Ao clicar no checkbox de um item ativo, ele deve ser marcado como concluído.
+* RN02 — Itens concluídos devem ter o texto riscado (line-through) e cor cinza (classe CSS 'completed').
+* RN03 — O contador "items left" deve ser decrementado ao concluir uma tarefa.
+* RN04 — Ao clicar no checkbox de um item já concluído, ele deve voltar a ser ativo (desmarcado).
+* RN05 — O contador "items left" deve ser incrementado ao reativar uma tarefa.
 
 ### 🧪 Cenários BDD (Gherkin)
 ```Gherkin
@@ -203,10 +203,10 @@ Cenário: Desmarcar uma tarefa (Reversão)
 Como usuário da aplicação, quero alterar o status de todas as minhas tarefas de uma vez só, para agilizar a organização quando termino tudo ou quando preciso reiniciar meu dia.
 
 ### 🎯 Regras de Negócio (RNs)
-RN01 — Se houver pelo menos uma tarefa pendente na lista, o clique na seta deve marcar todas como concluídas.
-RN02 — Se todas as tarefas já estiverem concluídas, o clique na seta deve marcar todas como ativas (pendentes).
-RN03 — O contador "items left" deve ser atualizado para "0" (quando tudo for concluído) ou para o total de tarefas (quando tudo for reaberto).
-RN04 — A própria seta (toggle) deve mudar de cor (geralmente escurecer) para indicar que todas as tarefas estão concluídas.
+* RN01 — Se houver pelo menos uma tarefa pendente na lista, o clique na seta deve marcar todas como concluídas.
+* RN02 — Se todas as tarefas já estiverem concluídas, o clique na seta deve marcar todas como ativas (pendentes).
+* RN03 — O contador "items left" deve ser atualizado para "0" (quando tudo for concluído) ou para o total de tarefas (quando tudo for reaberto).
+* RN04 — A própria seta (toggle) deve mudar de cor (geralmente escurecer) para indicar que todas as tarefas estão concluídas.
 
 ### 🧪 Cenários BDD (Gherkin)
 ```Gherkin
@@ -232,11 +232,11 @@ Cenário: Reabrir tudo (Desmarcar em lote)
 Como usuário da aplicação, quero limpar os itens já concluídos, para me concentrar apenas nas tarefas a serem feitas.
 
 ### 🎯 Regras de Negócio (RNs)
-RN01 — O botão "Clear completed" deve estar sempre visível no rodapé.
-RN02 — Ao passar o mouse sobre o botão, ele deve ser sublinhado (feedback visual).
-RN03 — Ao clicar no botão, os itens com status "checked" (concluídos) devem ser excluídos.
-RN04 — O contador "items left" deve permanecer inalterado (pois conta apenas pendentes).
-RN05 — Se não houver tarefas concluídas, clicar no botão não deve realizar nenhuma ação (o sistema não deve travar).
+* RN01 — O botão "Clear completed" deve estar sempre visível no rodapé.
+* RN02 — Ao passar o mouse sobre o botão, ele deve ser sublinhado (feedback visual).
+* RN03 — Ao clicar no botão, os itens com status "checked" (concluídos) devem ser excluídos.
+* RN04 — O contador "items left" deve permanecer inalterado (pois conta apenas pendentes).
+* RN05 — Se não houver tarefas concluídas, clicar no botão não deve realizar nenhuma ação (o sistema não deve travar).
 
 ### 🧪 Cenários BDD (Gherkin)
 ```Gherkin
