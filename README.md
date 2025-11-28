@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 🧪 QA Portfolio: TodoMVC (React)
 
 ![Status](https://img.shields.io/badge/Status-Concluído-success)
