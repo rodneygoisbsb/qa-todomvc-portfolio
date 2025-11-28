@@ -199,16 +199,16 @@ Cenário: Desmarcar uma tarefa (Reversão)
 
 ## 7. Funcionalidade: Conclusão de Itens - Em Lote (Toggle All)
 
-## 📜 História do Usuário
+### 📜 História do Usuário
 Como usuário da aplicação, quero alterar o status de todas as minhas tarefas de uma vez só, para agilizar a organização quando termino tudo ou quando preciso reiniciar meu dia.
 
-## 🎯 Regras de Negócio (RNs)
+### 🎯 Regras de Negócio (RNs)
 RN01 — Se houver pelo menos uma tarefa pendente na lista, o clique na seta deve marcar todas como concluídas.
 RN02 — Se todas as tarefas já estiverem concluídas, o clique na seta deve marcar todas como ativas (pendentes).
 RN03 — O contador "items left" deve ser atualizado para "0" (quando tudo for concluído) ou para o total de tarefas (quando tudo for reaberto).
 RN04 — A própria seta (toggle) deve mudar de cor (geralmente escurecer) para indicar que todas as tarefas estão concluídas.
 
-## 🧪 Cenários BDD (Gherkin)
+### 🧪 Cenários BDD (Gherkin)
 ```Gherkin
 
 Cenário: Concluir tudo (tendo itens mistos ou pendentes)
@@ -226,7 +226,7 @@ Cenário: Reabrir tudo (Desmarcar em lote)
   E o contador deve exibir "3 items left"
 ```
 
-##8. Funcionalidade: Limpar Itens Finalizados
+## 8. Funcionalidade: Limpar Itens Finalizados
 
 ### 📜 História do Usuário
 Como usuário da aplicação, quero limpar os itens já concluídos, para me concentrar apenas nas tarefas a serem feitas.
