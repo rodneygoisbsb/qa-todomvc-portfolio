@@ -1,186 +1,168 @@
-## 🧪 Cenários de Teste — TodoMVC (Gherkin)
+## Cenários de Teste — TodoMVC (Gherkin)
 
 Abaixo estão todos os cenários escritos em Gherkin, organizados por funcionalidade.
 
 ---
 
-### 📌 01 - Tela Inicial
-
-```gherkin
 Feature: Tela Inicial
 
-Scenario: Carregamento inicial da aplicação
-  Given que acesso a URL do projeto TodoMVC
-  Then devo ver o título "todos" no topo da página
-  And devo visualizar um campo de entrada de texto vazio
-  And o campo de entrada deve conter o placeholder "What needs to be done?"
+  @smoke @critical
+  Scenario: Carregamento inicial da aplicação
+    Given que acesso a URL do projeto TodoMVC
+    Then devo ver o título "todos" no topo da página
+    And devo visualizar um campo de entrada de texto vazio
+    And o campo de entrada deve conter o placeholder "What needs to be done?"
 
-Scenario: Foco automático no input
-  Given que a página acabou de ser carregada
-  When verifico onde está o cursor do mouse
-  Then o campo de entrada de tarefas deve estar focado
+  @regression
+  Scenario: Foco automático no input
+    Given que a página acabou de ser carregada
+    When verifico onde está o cursor do mouse
+    Then o campo de entrada de tarefas deve estar focado
 
-Scenario: Ocultação de elementos quando não existem tarefas
-  Given que não possuo nenhuma tarefa cadastrada
-  Then a lista de tarefas deve estar invisível
-  And a barra de rodapé não deve ser exibida
-```
+  @negative @regression
+  Scenario: Ocultação de elementos quando não existem tarefas
+    Given que não possuo nenhuma tarefa cadastrada
+    Then a lista de tarefas deve estar invisível
+    And a barra de rodapé não deve ser exibida
 
-### 📌 Adicionar Itens
-
-```gherkin
 Feature: Adicionar Itens
 
-Scenario: Adicionar tarefa com sucesso
-  Given que estou na tela inicial com foco no input
-  When digito "Estudar Gherkin" e pressiono Enter
-  Then o item "Estudar Gherkin" deve aparecer como último elemento da lista
-  And o campo de input deve voltar a ficar vazio
-  And um checkbox não marcado deve ser exibido ao lado do item
+  @smoke @critical
+  Scenario: Adicionar tarefa com sucesso
+    Given que estou na tela inicial com o input focado
+    When digito "Estudar Gherkin" e pressiono Enter
+    Then o item "Estudar Gherkin" deve aparecer na lista
+    And o campo de input deve voltar a ficar vazio
+    And um checkbox não marcado deve estar exibido ao lado do item
 
-Scenario: Tentativa de adicionar tarefa vazia
-  Given que o campo de input está vazio
-  When pressiono Enter
-  Then nenhuma tarefa deve ser adicionada
-  And o rodapé deve continuar oculto
+  @negative
+  Scenario: Não deve permitir tarefa vazia
+    Given que o campo de input está vazio
+    When pressiono Enter
+    Then nenhuma tarefa deve ser adicionada
+    And o rodapé deve continuar oculto
 
-Scenario: Adicionar tarefa com espaços extras
-  Given que digito "   Fazer Café   " no input
-  When pressiono Enter
-  Then o item deve ser salvo como "Fazer Café"
+  @regression
+  Scenario: Remover espaços na criação
+    Given que digito "   Fazer Café   " no input
+    When pressiono Enter
+    Then o item deve ser salvo como "Fazer Café"
 
-Scenario: Primeira inserção habilita controles
-  Given que não tenho tarefas registradas
-  When adiciono a tarefa "Primeira Tarefa"
-  Then a barra de rodapé deve aparecer
-  And a opção "Mark all as complete" deve ser exibida
-```
-# Filtragem: Todos
+  @regression
+  Scenario: Primeiro item deve exibir elementos de controle
+    Given que não tenho tarefas registradas
+    When adiciono a tarefa "Primeira Tarefa"
+    Then a barra de rodapé deve ser exibida
+    And a seta de marcar tudo deve ficar visível
 
-```gherkin
-Feature: Filtragem de Tarefas - Todos
+Feature: Filtragem - Todos
 
-Scenario: Estado inicial deve exibir todas as tarefas
-  Given que acessei a aplicação TodoMVC
-  Then a lista deve exibir todos os itens pendentes e concluídos
-  And o filtro "Todos" deve estar selecionado
+  @smoke @critical
+  Scenario: Filtro padrão ao acessar aplicação
+    Given que acessei o TodoMVC
+    Then todas as tarefas (pendentes e concluídas) devem ser exibidas
+    And o filtro "All" deve estar selecionado
 
-Scenario: Alternar para o filtro Todos
-  Given que estou visualizando apenas tarefas ativas
-  And possuo tarefas concluídas
-  When clico no filtro "Todos"
-  Then devo ver tarefas pendentes e concluídas
-  And o filtro "Todos" deve estar selecionado
+  @regression
+  Scenario: Trocar para filtro "All" vindo de outra visualização
+    Given que estou visualizando tarefas ativas
+    And possuo tarefas concluídas
+    When clico no filtro "All"
+    Then todas as tarefas devem ser exibidas
+    And o filtro "All" deve estar selecionado
 
-Scenario: Contador deve ignorar tarefas concluídas
-  Given que tenho 2 tarefas pendentes
-  And tenho 1 tarefa concluída
-  When visualizo o filtro Todos
-  Then o contador deve exibir "2 items left"
-```
-# Filtragem: Ativos
+  @regression
+  Scenario: Contador deve exibir apenas tarefas ativas
+    Given que tenho 2 tarefas pendentes
+    And tenho 1 tarefa concluída
+    When estou no filtro "All"
+    Then o contador deve exibir "2 items left"
 
-```gherkin
-Feature: Filtragem de Tarefas - Ativas
+Feature: Filtragem - Ativos
 
-Scenario: Exibir apenas tarefas ativas
-  Given que possuo a tarefa "Comprar Leite" pendente
-  And possuo a tarefa "Pagar Conta" concluída
-  When clico no filtro "Active"
-  Then devo ver apenas "Comprar Leite"
-  And a tarefa "Pagar Conta" não deve ser exibida
-  And a URL deve conter "/active"
+  @smoke @regression @critical
+  Scenario: Exibir apenas tarefas ativas
+    Given que possuo a tarefa "Comprar Leite" pendente
+    And possuo a tarefa "Pagar Conta" concluída
+    When clico no filtro "Active"
+    Then devo ver apenas "Comprar Leite"
+    And tarefas concluídas devem estar ocultas
 
-Scenario: Validação do contador no filtro Active
-  Given que tenho 2 tarefas pendentes e 1 concluída
-  When acesso o filtro "Active"
-  Then devo ver apenas 2 itens
-  And o contador deve exibir "2 items left"
+  @regression
+  Scenario: Contador deve refletir somente tarefas ativas
+    Given que tenho 2 tarefas pendentes
+    And tenho 1 concluída
+    When estou filtrando por tarefas ativas
+    Then o contador deve exibir "2 items left"
 
-```
-# Filtragem: Concluídos
+  @negative
+  Scenario: Lista vazia quando não houver tarefas ativas
+    Given que todas as tarefas estão concluídas
+    When clico no filtro "Active"
+    Then nenhuma tarefa deve ser exibida
 
-```gherkin
-Feature: Filtragem de Tarefas - Concluídas
+Feature: Filtragem - Concluídos
 
-Scenario: Exibir apenas concluídas
-  Given que possuo a tarefa pendente "Comprar Leite"
-  And possuo a tarefa concluída "Pagar Conta"
-  When clico no filtro "Completed"
-  Then devo ver apenas "Pagar Conta"
-  And "Comprar Leite" não deve ser exibida
-  And a URL deve conter "/completed"
+  @smoke @regression
+  Scenario: Exibir apenas tarefas concluídas
+    Given que possuo uma tarefa pendente
+    And possuo duas tarefas concluídas
+    When clico no filtro "Completed"
+    Then apenas tarefas concluídas devem ser exibidas
 
-Scenario: Validação do contador no filtro Completed
-  Given que tenho 1 tarefa pendente
-  And tenho 2 tarefas concluídas
-  When acesso o filtro "Completed"
-  Then devo ver 2 tarefas concluídas
-  And o contador deve exibir "1 item left"
+  @regression
+  Scenario: Contador deve ignorar tarefas concluídas
+    Given que tenho 1 tarefa pendente
+    And tenho 2 concluídas
+    When estou no filtro "Completed"
+    Then o contador deve exibir "1 item left"
 
-```
-# Marcar e Desmarcar Tarefas
+Feature: Conclusão de Itens - Unitária
 
-```gherkin
-Feature: Conclusão de Itens
+  @smoke @critical
+  Scenario: Marcar tarefa como concluída
+    Given que possuo a tarefa ativa "Lavar a Louça"
+    When marco a tarefa como concluída
+    Then a tarefa deve aparecer riscada
+    And o checkbox deve estar selecionado
 
-Scenario: Marcar tarefa como concluída
-  Given que possuo a tarefa ativa "Lavar a Louça"
-  When clico no checkbox ao lado da tarefa
-  Then o checkbox deve ficar marcado
-  And o texto deve ficar riscado e cinza
-  And a classe CSS "completed" deve ser aplicada
+  @regression
+  Scenario: Atualizar contador ao marcar tarefa
+    Given que o contador exibe "3 items left"
+    When marco uma tarefa como concluída
+    Then o contador deve exibir "2 items left"
 
-Scenario: Atualização do contador ao concluir tarefa
-  Given que o contador exibe "3 items left"
-  When marco uma tarefa como concluída
-  Then o contador deve atualizar para "2 items left"
+  @regression
+  Scenario: Desmarcar tarefa concluída
+    Given que a tarefa "Lavar a Louça" está marcada como concluída
+    When desmarco a tarefa
+    Then ela deve voltar ao estado ativo
 
-Scenario: Desmarcar tarefa concluída
-  Given que possuo a tarefa "Lavar a Louça" concluída
-  And o contador exibe "0 items left"
-  When clico novamente no checkbox
-  Then a tarefa deve voltar a ser ativa
-  And o contador deve exibir "1 item left"
+Feature: Conclusão de Itens - Em Lote
 
-```
-# Ações em Lote
+  @critical @regression
+  Scenario: Marcar todas as tarefas como concluídas
+    Given que possuo tarefas pendentes e concluídas
+    When marco todas como concluídas
+    Then nenhuma tarefa deve permanecer ativa
+    And o contador deve exibir "0 items left"
 
-```gherkin
-Feature: Ações em Lote
+  @regression
+  Scenario: Reabrir todas as tarefas
+    Given que todas as tarefas estão concluídas
+    When clico no botão "Marcar tudo"
+    Then todas as tarefas devem voltar a ser ativas
 
-Scenario: Concluir todas as tarefas
-  Given que possuo "Tarefa A" pendente
-  And possuo "Tarefa B" concluída
-  When clico em "Mark all as complete"
-  Then todas as tarefas devem ficar concluídas
-  And o contador deve exibir "0 items left"
-
-Scenario: Reabrir todas as tarefas
-  Given que todas as tarefas estão concluídas
-  And o contador exibe "0 items left"
-  When clico em "Mark all as complete" novamente
-  Then todas as tarefas devem voltar a ser ativas
-  And o contador deve exibir "3 items left"
-
-```
-# Limpar Completadas
-
-```gherkin
 Feature: Limpar tarefas concluídas
 
-Scenario: Remover apenas tarefas concluídas
-  Given que possuo "Lavar Roupa" pendente
-  And possuo "Pagar Boleto" concluída
-  When clico em "Clear completed"
-  Then apenas "Pagar Boleto" deve ser removida
-  And "Lavar Roupa" deve permanecer
-  And o contador deve exibir "1 item left"
+  @smoke @critical
+  Scenario: Remover apenas tarefas concluídas
+    Given que possuo tarefas concluídas e tarefas pendentes
+    When clico em "Clear completed"
+    Then apenas tarefas concluídas devem ser removidas
 
-Scenario: Clique sem tarefas concluídas
-  Given que possuo apenas tarefas pendentes
-  When clico em "Clear completed"
-  Then nenhuma tarefa deve ser removida
-  And o contador deve permanecer inalterado
-
-```
+  @negative @regression
+  Scenario: Nenhuma remoção quando não houver itens concluídos
+    Given que não possuo tarefas concluídas
+    When clico em "Clear completed"
+    Then nenhuma alteração deve ocorrer
