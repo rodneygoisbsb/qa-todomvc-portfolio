@@ -1,4 +1,4 @@
-# 🧪 QA Portfolio: TodoMVC (React)
+# QA Portfolio: TodoMVC (React)
 
 ![Status](https://img.shields.io/badge/Status-Concluído-success)
 ![Context](https://img.shields.io/badge/Contexto-Transição%20de%20Carreira-blue)
@@ -10,7 +10,7 @@ O projeto simula um ambiente real de QA, cobrindo desde a análise de requisitos
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 Demonstrar a aplicação prática de conceitos de Qualidade de Software, incluindo:
 - **Análise de Requisitos:** Identificação de fluxos críticos e regras de negócio.
 - **BDD (Behavior Driven Development):** Escrita de cenários em Gherkin.
@@ -19,12 +19,12 @@ Demonstrar a aplicação prática de conceitos de Qualidade de Software, incluin
 
 ---
 
-## 📚 Documentação do Projeto (Live Dashboard)
+## Documentação do Projeto (Live Dashboard)
 
 Toda a estratégia, planejamento e execução foram documentados em um **Dashboard Interativo no Notion**.
 Isso permite uma visualização em tempo real do progresso, métricas e gestão de defeitos.
 
-### 👉 [ACESSE O PLANO DE TESTES NO NOTION AQUI](https://cord-fin-e67.notion.site/Plano-de-Testes-TodoMVC-React-2b879cd581f18071bf8febf89df1b1f7?source=copy_link)
+### [ACESSE O PLANO DE TESTES NO NOTION AQUI](https://cord-fin-e67.notion.site/Plano-de-Testes-TodoMVC-React-2b879cd581f18071bf8febf89df1b1f7?source=copy_link)
 
 > **O que você encontrará no Dashboard:**
 > * 🗺️ **Estratégia:** Definição de escopo (In/Out), ambiente e critérios de aceite.
@@ -34,7 +34,7 @@ Isso permite uma visualização em tempo real do progresso, métricas e gestão 
 
 ---
 
-## 🛠️ Escopo Funcional Validado
+## Escopo Funcional Validado
 
 O projeto garantiu a qualidade das seguintes funcionalidades críticas (CRUD):
 
@@ -48,7 +48,7 @@ O projeto garantiu a qualidade das seguintes funcionalidades críticas (CRUD):
 
 ---
 
-## 📝 Especificações Técnicas (Gherkin)
+## Especificações Técnicas (Gherkin)
 
 Os cenários foram escritos utilizando a sintaxe **Gherkin** para garantir clareza e facilitar a comunicação entre QA e Desenvolvedores.
 Você pode consultar o arquivo fonte dos cenários aqui:
@@ -57,7 +57,7 @@ Você pode consultar o arquivo fonte dos cenários aqui:
 
 ---
 
-## 🚀 Próximos Passos (Roadmap)
+## Próximos Passos (Roadmap)
 
 A evolução deste projeto visa a automação dos cenários já mapeados:
 - [ ] Automação Web E2E com **Cypress**.
