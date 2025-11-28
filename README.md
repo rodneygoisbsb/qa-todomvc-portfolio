@@ -32,6 +32,14 @@ Isso permite uma visualização em tempo real do progresso, métricas e gestão 
 > * 🏃‍♂️ **Kanban de Execução:** Visualização ágil do status dos testes.
 > * 🐛 **Gestão de Bugs:** Relatórios de defeitos com evidências e severidade.
 
+## 📄 Especificações Técnicas e Repositório de Requisitos
+
+Abaixo está o link direto para o arquivo que centraliza toda a **análise de requisitos** e o **mapeamento de testes** deste projeto.
+
+Este documento serve como a **Fonte Única de Verdade** (Single Source of Truth), detalhando o comportamento esperado para cada funcionalidade.
+
+**[VER DOCUMENTAÇÃO COMPLETA: Histórias, RNs e Cenários BDD](./Especificacoes.md)**
+
 ---
 
 ## Escopo Funcional Validado
