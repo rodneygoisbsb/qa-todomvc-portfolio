@@ -76,5 +76,5 @@ A evolução deste projeto visa a automação dos cenários já mapeados:
 ## 👨‍💻 Sobre o Analista
 
 **Rodney Góis**
-*QA em transição de carreira, focado em organização, processos ágeis e Testes Funcionais.*
+*QA focado em processos ágeis, organização e Testes Funcionais.*
 [LinkedIn](https://www.linkedin.com/in/rodney-gois/)
